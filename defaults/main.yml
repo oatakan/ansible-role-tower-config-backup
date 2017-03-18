@@ -1,0 +1,20 @@
+---
+# defaults file for tower-config-backup
+backup_to_file: yes
+backup_temp_location: /tmp/tower-backup
+backup_file_name: ansible-tower-config-backup-{{inventory_hostname}}.tar.gz
+
+backup_configs:
+  - name: inventories
+    backup: yes
+  - name: job_templates
+    backup: yes
+  - name: users
+    backup: yes
+  - name: credentials
+    backup: yes
+  - name: projects
+    backup: yes
+
+
+

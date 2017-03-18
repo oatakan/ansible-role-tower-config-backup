@@ -1,0 +1,10 @@
+---
+- name: get inventories from tower
+  uri:
+    url: "https://{{ tower_hostname|default(inventory_hostname) }}/api/v1/inventories/"
+    user: "{{ tower_admin }}"
+    password: "{{ tower_password }}"
+    body_format: json
+    method: GET
+    validate_certs: no
+  register: inventories

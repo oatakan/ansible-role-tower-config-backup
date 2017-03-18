@@ -1,0 +1,21 @@
+galaxy_info:
+  author: Orcun Atakan
+  description: This is a galaxy role to create a backup copy Ansible Tower configuration
+  company: Red Hat
+
+  license: license (GPLv2, CC-BY, etc)
+
+  min_ansible_version: 1.2
+
+  platforms:
+  - name: EL
+    versions:
+    - all
+
+  categories:
+  - all
+
+  galaxy_tags:
+  - tower
+
+dependencies: []

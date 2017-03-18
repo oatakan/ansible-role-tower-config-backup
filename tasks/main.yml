@@ -1,0 +1,25 @@
+---
+- name: Remove backup dir if it exists
+  file:
+    path: '{{ backup_temp_location }}'
+    state: absent
+  when: (backup_to_file | bool ) and (backup_temp_location is defined)
+
+- name: ensure the backup directory exists
+  file:
+    path: '{{ backup_temp_location }}'
+    state: directory
+    recurse: yes
+    mode: 0777
+  when: (backup_to_file | bool ) and (backup_temp_location is defined)
+
+- include: backup.yml
+  vars:
+    api_url: "https://{{ tower_hostname|default(inventory_hostname) }}/api/v1/{{ item.name }}/"
+    user: "{{ tower_admin }}"
+    password: "{{ tower_password }}"
+    backup_object: "{{ item.name }}"
+  when: item.backup | bool
+  with_items: "{{ backup_configs }}"
+
+

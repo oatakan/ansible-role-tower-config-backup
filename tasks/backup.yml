@@ -1,0 +1,10 @@
+---
+- name: get {{ backup_object }} from tower
+  get_url:
+    url: "{{ api_url }}"
+    url_username: "{{ user }}"
+    url_password: "{{ password }}"
+    dest: "{{ backup_temp_location }}/{{ backup_object }}"
+    validate_certs: no
+  register: results
+  when: api_url is defined
